@@ -22,10 +22,10 @@ class Evento(models.Model):
 
 class Luta(models.Model):
 
-    evento = models.ForeignKey("Evento", verbose_name=_("Evento"), on_delete=models.CASCADE)
-    lutadorA = models.ForeignKey("Lutador", verbose_name=_("Lutador 1"), on_delete=models.CASCADE, related_name='lutador')
-    lutadorB = models.ForeignKey("Lutador", verbose_name=_("Lutador 2"), on_delete=models.CASCADE, related_name='oponente')
-    card = models.ForeignKey("Card", verbose_name=_("Card"), on_delete=models.CASCADE)
+    evento = models.ForeignKey("Evento", verbose_name=_("Evento"), on_delete=models.CASCADE, blank=True)
+    lutadorA = models.ForeignKey("Lutador", verbose_name=_("Lutador 1"), on_delete=models.CASCADE, related_name='lutador', null=True, blank=True)
+    lutadorB = models.ForeignKey("Lutador", verbose_name=_("Lutador 2"), on_delete=models.CASCADE, related_name='oponente', null=True, blank=True)
+    card = models.ForeignKey("Card", verbose_name=_("Card"), on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = _("luta")
